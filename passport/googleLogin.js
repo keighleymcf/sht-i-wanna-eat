@@ -5,14 +5,27 @@ const User = require("../models/User");
 passport.use(
   new GoogleStrategy(
     {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: x /* add */
     },
-    function(accessToken, refreshToken, profile, cb) {
-      User.findOrCreate({ googleId: profile.id }, function(err, user) {
-        return cb(err, user);
-      });
+    (accessToken, refreshToken, profile, done) => {
+      // find a user with profile.id as googleId or create one
+      User.findOne({ googleId: profile.id })
+        .then(found => {
+          if (found !== null) {
+            // user with that googleId already exists
+            done(null, found);
+          } else {
+            // no user with that googleId
+            return User.create({ googleId: profile.id }).then(dbUser => {
+              done(null, dbUser);
+            });
+          }
+        })
+        .catch(err => {
+          done(err);
+        });
     }
   )
 );

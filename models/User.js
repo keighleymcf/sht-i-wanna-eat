@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
   {
-    username: String,
+    email: String,
     password: String,
     list: objectId /* link to list? */,
     googleId: String /* ?? doubel check */
