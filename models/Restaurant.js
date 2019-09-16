@@ -6,9 +6,9 @@ const restaurantSchema = new Schema(
     /* list: objectId /* parent list id , */
     googleId: String /* ? format? */,
     name: String,
-    cuisine: Array,
-    priceRange: String /* ?? double check */,
-    openNow: Boolean /* ?? double check */,
+    // cuisine: Array,
+    // priceRange: String /* ?? double check */,
+    // openNow: Boolean /* ?? double check */,
     address: String /* ?? double check */
   },
   {
@@ -20,4 +20,4 @@ const restaurantSchema = new Schema(
 );
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);
-module.exports = List;
+module.exports = Restaurant;

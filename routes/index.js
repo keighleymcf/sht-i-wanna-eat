@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Restaurant = require("../models/Restaurant");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
@@ -27,6 +28,16 @@ router.get("/map", (req, res, next) => {
 router.get("/list", (req, res, next) => {
   const user = req.user;
   res.render("list", { user });
+});
+
+router.post("/list", (req, res, next) => {
+  const restaurant = new Restaurant({
+    googleId: document.querySelector("#place-id").innerText,
+    name: document.querySelector("#place-name").innerText,
+    address: document.querySelector("#place-address").innerText
+  });
+  console.log(restaurant);
+  res.redirect("/list");
 });
 
 router.get("/my-map", (req, res, next) => {
