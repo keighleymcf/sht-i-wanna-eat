@@ -1,4 +1,9 @@
 <h1>map of my sh*t</h1>
-
+{{#if user}}
 {{!-- insert map --}}
 insert map here
+{{else}}
+<div class="no-user">
+  <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
+</div>
+{{/if}}
