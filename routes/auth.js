@@ -8,6 +8,7 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
+
 router.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });
 });
@@ -59,5 +60,13 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+
+// acces map view
+
+
+
+
+
 
 module.exports = router;
