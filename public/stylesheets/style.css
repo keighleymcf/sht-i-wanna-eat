@@ -3,7 +3,6 @@
   margin: 0; }
 
 body {
-<<<<<<< HEAD
   padding: 0px; }
 
 /*layout.hbs elements*/
@@ -76,8 +75,7 @@ body {
 /*map view*/
 /*# sourceMappingURL=style.css.map */
 /*list view*/
-=======
-  padding: 0px;
+body {
   font: 16px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -87,6 +85,5 @@ a {
   width: 40%;
   padding: 12px 20px;
   font-size: 1rem; }
->>>>>>> google-search-branch2-noriko
 
 /*# sourceMappingURL=style.css.map */
