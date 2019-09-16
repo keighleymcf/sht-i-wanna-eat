@@ -5,9 +5,15 @@
 
 body {
   padding: 0px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+#pac-input {
+  width: 40%;
+  padding: 12px 20px;
+  font-size: 1rem
 }
