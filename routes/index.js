@@ -23,6 +23,10 @@ router.get("/map", (req, res, next) => {
   res.render("map");
 });
 
+router.get("/map", (req, res, next) => {
+  res.render("map");
+});
+
 
 
 
