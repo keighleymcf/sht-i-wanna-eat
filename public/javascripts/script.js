@@ -6,3 +6,7 @@ document.addEventListener(
   false
 );
 
+const navIcon = document.querySelector('#nav-icon');
+navIcon.onclick = () => {
+  navIcon.classList.toggle('open');
+}
