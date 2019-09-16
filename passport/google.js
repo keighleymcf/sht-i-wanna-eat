@@ -1,5 +1,5 @@
 const passport = require("passport");
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require("passport-google-oauth20").OAuth2Strategy;
 const User = require("../models/User");
 
 passport.use(
@@ -7,7 +7,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: x /* add */
+      callbackURL: "/auth/google/callback"
     },
     (accessToken, refreshToken, profile, done) => {
       // find a user with profile.id as googleId or create one

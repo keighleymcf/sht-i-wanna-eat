@@ -3,7 +3,8 @@ const Schema = mongoose.Schema;
 
 const restaurantSchema = new Schema(
   {
-    list: objectId /* parent list id */,
+    /* list: objectId /* parent list id , */
+    googleId: String /* ? format? */,
     name: String,
     cuisine: Array,
     priceRange: String /* ?? double check */,

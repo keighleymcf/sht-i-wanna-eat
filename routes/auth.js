@@ -3,6 +3,8 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/User");
 
+const googlePassport = require("passport-google-oauth20");
+
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
@@ -21,7 +23,15 @@ router.post(
   })
 );
 
-router.get("/google", passport.authenticate("google"));
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/plus.login",
+      "https://www.googleapis.com/auth/plus.profile.emails.read"
+    ]
+  })
+);
 
 router.get(
   "/google/callback",

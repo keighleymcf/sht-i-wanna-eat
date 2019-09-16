@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const listSchema = new Schema(
   {
-    ownerId: objectId /* user id */,
+    /*ownerId: objectId, /* user id */
     savedRestaurants: Array
   },
   {
