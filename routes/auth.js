@@ -85,4 +85,12 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+
+// acces map view
+
+
+
+
+
+
 module.exports = router;
