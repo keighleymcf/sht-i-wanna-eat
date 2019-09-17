@@ -5,7 +5,6 @@
   font-family: 'Arvo'; }
 
 body {
-<<<<<<< HEAD
   background-image: linear-gradient(to top, #D00090 0%, #FF7F00 100%);
   height: 100vh; }
 
@@ -30,9 +29,6 @@ body {
 
 .navbar-toggler:focus {
   outline: none; }
-=======
-  padding: 0px; }
->>>>>>> layout-noriko
 
 /*layout.hbs elements*/
 #nav-icon {
@@ -113,24 +109,10 @@ body {
   flex-direction: column;
   align-items: center; }
 
+/*list view*/
 /*map view*/
 /*# sourceMappingURL=style.css.map */
-<<<<<<< HEAD
 a {
   color: #00B7FF; }
 
-=======
-/*list view*/
-body {
-  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif; }
-
-a {
-  color: #00B7FF; }
-
-#pac-input {
-  width: 40%;
-  padding: 12px 20px;
-  font-size: 1rem; }
-
->>>>>>> layout-noriko
 /*# sourceMappingURL=style.css.map */
