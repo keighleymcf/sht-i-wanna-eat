@@ -3,13 +3,20 @@ const Schema = mongoose.Schema;
 
 const restaurantSchema = new Schema(
   {
-    /* list: objectId /* parent list id , */
-    googleId: String /* ? format? */,
+    yelpId: String,
     name: String,
-    // cuisine: Array,
-    // priceRange: String /* ?? double check */,
-    // openNow: Boolean /* ?? double check */,
-    address: String /* ?? double check */
+    display_address: Array,
+    categories: Array,
+    price: String,
+    owner: {
+      type: Schema.Types.ObjectId,
+      ref: "User"
+    },
+    // TAGS NEEDS TO BE ARRAY
+    tags: {
+      type: Schema.Types.ObjectId,
+      ref: "Tag"
+    }
   },
   {
     timestamps: {

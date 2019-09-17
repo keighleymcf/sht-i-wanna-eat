@@ -1,6 +1,4 @@
-<h1>list of my sh*t</h1>
-{{#if user}}
-{{#each restaurantList}}
+{{#each results}}
 <div class="list-element">
   <div class="list-element-info">
     <h2 class="rest-list-name"> {{name}} </h2>
@@ -10,18 +8,14 @@
   </div>
   <div>
     <form action="/add-result/{{id}}" method="get">
-      <button class="add-btn" type="submit">-</button></form>
+      <button class="add-btn" type="submit">+</button></form>
     {{!-- <img src="../public/images/plus-icon.png" alt="add that sh*t"> --}}
   </div>
   {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
   <div class="popup">
-    <p>deleted that sh*t</p>
+    <p>added that sh*t</p>
+    <a href="/list"><button type="submit">go to my list</button></a>
   </div>
   {{!-- <p class="rest-list-open-now">open now</p> --}}
 </div>
 {{/each}}
-{{else}}
-<div class="no-user">
-  <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
-</div>
-{{/if}}

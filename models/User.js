@@ -5,8 +5,7 @@ const userSchema = new Schema(
   {
     email: String,
     password: String,
-    /*list: objectId /* link to list? ,*/
-    googleId: String /* ?? doubel check */
+    googleId: String
   },
   {
     timestamps: {
