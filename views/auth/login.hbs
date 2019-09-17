@@ -1,25 +1,27 @@
-
 <h2>Login</h2>
 
-<form action="/auth/login" method="POST" id="form-container">
-  <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+<div class="plate-box">
+  <form action="/auth/login" method="POST" id="form-container">
+    <label for="email">e-mail</label>
+    <input id="email" type="text" name="email" placeholder="hungry@feedme.com">
 
-  <br><br>
+    <br><br>
 
-  <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
-  <br>
-  {{#if message }}
+    <label for="password">password</label>
+    <input id="password" type="password" name="password" placeholder="Your password">
+    <br>
+    {{#if message }}
     <div class="error-message">{{ message }}</div>
-  {{/if}}
+    {{/if}}
 
-  <br><br>
+    <br><br>
 
-  <button>Login</button>
+    <button>Login</button>
+  </form>
+</div>
 
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
-  </p>
-</form>
+<a href="/auth/google"><button>Or login with Google</button></a>
+<p class="account-message">
+  No account yet?
+  <a href="/auth/signup">Signup</a>
+</p>

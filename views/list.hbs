@@ -1,0 +1,16 @@
+<h1>list of my sh*t</h1>
+{{#if user}}
+{{!-- {{#each }} --}}
+<div class="list-element">
+  <h2 class="rest-list-name">Name</h2>
+  <p class="rest-list-address">addy</p>
+  <p class="rest-list-type">type</p>
+  <p class="rest-list-price-range">price range</p>
+  <p class="rest-list-open-now">open now</p>
+</div>
+{{!-- {{/each}} --}}
+{{else}}
+<div class="no-user">
+  <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
+</div>
+{{/if}}

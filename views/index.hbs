@@ -1,2 +1,23 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>sh*t I wanna eat</h1>
+
+<div class="plate-box">
+  {{!-- add plate image --}}
+  {{#if user}}
+  <a href="/map">add new sh*t</a>
+  {{!-- add up arrow, swipe up to go to map --}}
+  <p>swipe</p>
+  {{!-- add down arrow, swipe down to go to list --}}
+  <a href="/list">list of my sh*t</a>
+
+  {{else}}
+  <a href="/auth/signup">sign up</a>
+  {{!-- add up arrow, swipe up to sign up --}}
+  <p>swipe</p>
+  {{!-- add down arrow, swipe down to log in --}}
+  <a href="/auth/login">log in</a>
+  {{/if}}
+</div>
+
+{{#if user}}
+<a href="/auth/logout">log out</a>
+{{/if}}
