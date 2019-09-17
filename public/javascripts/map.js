@@ -1,3 +1,10 @@
+// yelp search
+
+// document.getElementById("pac-input").onkeyup = () => {
+//   const input = document.getElementById("pac-input").value;
+//   getRestaurants(input);
+// };
+
 // create map
 
 function initMap() {
@@ -10,56 +17,55 @@ function initMap() {
     styles: mapStyles
   });
 
-  var input = document.getElementById("pac-input");
+  // var input = document.getElementById("pac-input");
 
-  var autocomplete = new google.maps.places.Autocomplete(input);
-  autocomplete.bindTo("bounds", map);
--
-  // Specify just the place data fields that you need.
-  autocomplete.setFields(["place_id", "geometry", "name"]);
+  // var autocomplete = new google.maps.places.Autocomplete(input);
+  // autocomplete.bindTo("bounds", map);
 
-  map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+  // // Specify just the place data fields that you need.
+  // autocomplete.setFields(["place_id", "geometry", "name"]);
 
-  var infowindow = new google.maps.InfoWindow();
-  var infowindowContent = document.getElementById("infowindow-content");
-  infowindow.setContent(infowindowContent);
+  // //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-  var marker = new google.maps.Marker({ map: map });
+  // var infowindow = new google.maps.InfoWindow();
+  // var infowindowContent = document.getElementById("infowindow-content");
+  // infowindow.setContent(infowindowContent);
 
-  marker.addListener("click", function() {
-    infowindow.open(map, marker);
-  });
+  // var marker = new google.maps.Marker({ map: map });
 
-  autocomplete.addListener("place_changed", function() {
-    infowindow.close();
+  // marker.addListener("click", function() {
+  //   infowindow.open(map, marker);
+  // });
 
-    var place = autocomplete.getPlace();
+  // autocomplete.addListener("place_changed", function() {
+  //   infowindow.close();
 
-    if (!place.geometry) {
-      return;
-    }
+  //   var place = autocomplete.getPlace();
 
-    if (place.geometry.viewport) {
-      map.fitBounds(place.geometry.viewport);
-    } else {
-      map.setCenter(place.geometry.location);
-      map.setZoom(17);
-    }
+  //   if (!place.geometry) {
+  //     return;
+  //   }
 
-    // Set the position of the marker using the place ID and location.
-    marker.setPlace({
-      placeId: place.place_id,
-      location: place.geometry.location
-    });
+  //   if (place.geometry.viewport) {
+  //     map.fitBounds(place.geometry.viewport);
+  //   } else {
+  //     map.setCenter(place.geometry.location);
+  //     map.setZoom(17);
+  //   }
 
-    marker.setVisible(true);
+  //   // Set the position of the marker using the place ID and location.
+  //   marker.setPlace({
+  //     placeId: place.place_id,
+  //     location: place.geometry.location
+  //   });
 
-    infowindowContent.children["place-name"].textContent = place.name;
-    infowindowContent.children["place-id"].textContent = place.place_id;
-    infowindowContent.children["place-address"].textContent = place.name;
-    infowindow.open(map, marker);
-    
-  });
+  //   marker.setVisible(true);
+
+  //   infowindowContent.children["place-name"].textContent = place.name;
+  //   infowindowContent.children["place-id"].textContent = place.place_id;
+  //   infowindowContent.children["place-address"].textContent = place.name;
+  //   infowindow.open(map, marker);
+  // });
 }
 
 

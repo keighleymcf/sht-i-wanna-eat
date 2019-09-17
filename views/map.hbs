@@ -1,6 +1,7 @@
 {{!-- map search bar --}}
-<form action="/map" method="get">
-  <input id="pac-input" class="controls" type="text" placeholder="find your sh*t">
+<form action="/search" method="get">
+  <input id="pac-input" class="controls" type="text" style="width: 100vw" placeholder="find your sh*t">
+  <button type="submit">search</button>
 </form>
 
 {{!-- google map --}}
@@ -15,16 +16,14 @@
   </form>
 </div>
 
-
-
-{{!-- googlemap api --}}
-{{!-- <script
+{{!-- googlemap api
+<script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7K8xVQEkyXx41h7IqJCPSuhwaipoq5jM&callback=initMap&language=en&region=de"
-  asyncdefer></script> --}}
+  async defer></script>
+ --}}
 
-
-
+{{!-- 
 {{!-- google map api for search autocomplete lace ID Geocoder --}}
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7K8xVQEkyXx41h7IqJCPSuhwaipoq5jM&libraries=places&callback=initMap&language=en&region=de"
-  async defer></script>
+  async defer></script> --}}
