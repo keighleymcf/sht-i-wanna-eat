@@ -14,7 +14,7 @@ function initMap() {
 
   var autocomplete = new google.maps.places.Autocomplete(input);
   autocomplete.bindTo("bounds", map);
-
+-
   // Specify just the place data fields that you need.
   autocomplete.setFields(["place_id", "geometry", "name"]);
 
@@ -58,8 +58,11 @@ function initMap() {
     infowindowContent.children["place-id"].textContent = place.place_id;
     infowindowContent.children["place-address"].textContent = place.name;
     infowindow.open(map, marker);
+    
   });
 }
+
+
 
 // // search and place functionalities
 
