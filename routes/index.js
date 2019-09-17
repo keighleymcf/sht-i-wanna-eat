@@ -35,7 +35,9 @@ router.get("/search", (req, res, next) => {
 /* GET home page */
 router.get("/", (req, res, next) => {
   const user = req.user;
-  res.render("index", { user });
+  res.render("index", {
+    user
+  });
 });
 
 //access map
