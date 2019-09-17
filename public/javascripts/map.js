@@ -1,4 +1,4 @@
-const yelp = require("index")
+// const yelp = require("index")
 // yelp search
 
 // document.getElementById("pac-input").onkeyup = () => {
@@ -16,24 +16,27 @@ function initMap() {
     },
     zoom: 14,
     styles: mapStyles
-  })
-  infoWindow = new google.maps.InfoWindow;
+  });
+  infoWindow = new google.maps.InfoWindow();
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      var pos = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-      };
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        var pos = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
 
-      console.log(pos);
-      infoWindow.setPosition(pos);
-      infoWindow.setContent('you are here');
-      infoWindow.open(map);
-      map.setCenter(pos);
-    }, function () {
-      handleLocationError(true, infoWindow, map.getCenter());
-    });
+        console.log(pos);
+        infoWindow.setPosition(pos);
+        infoWindow.setContent("you are here");
+        infoWindow.open(map);
+        map.setCenter(pos);
+      },
+      function() {
+        handleLocationError(true, infoWindow, map.getCenter());
+      }
+    );
   } else {
     // Browser doesn't support Geolocation
     handleLocationError(false, infoWindow, map.getCenter());
@@ -41,25 +44,27 @@ function initMap() {
 
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-      'Error: The Geolocation service failed.' :
-      'Error: Your browser doesn\'t support geolocation.');
+    infoWindow.setContent(
+      browserHasGeolocation
+        ? "Error: The Geolocation service failed."
+        : "Error: Your browser doesn't support geolocation."
+    );
     infoWindow.open(map);
   }
 
-  var input = document.getElementById("pac-input");
+  var input = document.getElementById("google-input");
   var searchBox = new google.maps.places.SearchBox(input);
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
-  map.addListener('bounds_changed', function () {
+  map.addListener("bounds_changed", function() {
     searchBox.setBounds(map.getBounds());
   });
 
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener('places_changed', function () {
+  searchBox.addListener("places_changed", function() {
     var places = searchBox.getPlaces();
 
     if (places.length == 0) {
@@ -67,14 +72,14 @@ function initMap() {
     }
 
     // Clear out the old markers.
-    markers.forEach(function (marker) {
+    markers.forEach(function(marker) {
       marker.setMap(null);
     });
     markers = [];
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
-    places.forEach(function (place) {
+    places.forEach(function(place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
         return;
@@ -88,15 +93,16 @@ function initMap() {
       };
 
       // Create a marker for each place.
-      markers.push(new google.maps.Marker({
-        map: map,
-        icon: icon,
-        title: place.name,
-        position: place.geometry.location,
-
-      }));
-      console.log(place.geometry.location.lng())
-      console.log(place.geometry.location.lat())
+      markers.push(
+        new google.maps.Marker({
+          map: map,
+          icon: icon,
+          title: place.name,
+          position: place.geometry.location
+        })
+      );
+      console.log(place.geometry.location.lng());
+      console.log(place.geometry.location.lat());
 
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
@@ -109,15 +115,11 @@ function initMap() {
       let yelpLng = 13.37475649999999;
       // let yelpLat = 50510999999999;
       if (googleLng === yelpLng) {
-        console.log("yes we are!")
+        console.log("yes we are!");
       }
-
     });
     map.fitBounds(bounds);
-  })
-
-
-
+  });
 
   // var autocomplete = new google.maps.places.Autocomplete(input);
   // autocomplete.bindTo("bounds", map);
@@ -168,12 +170,7 @@ function initMap() {
   //   console.log(place.geometry.location)
   //   infowindow.open(map, marker);
   // })
-
-};
-
-
-
-
+}
 
 //   // Set the position of the marker using the place ID and location.
 //   marker.setPlace({
@@ -189,16 +186,11 @@ function initMap() {
 //   infowindow.open(map, marker);
 // });
 
-
-
-
 // // search and place functionalities
 
 // infoWindow = new google.maps.InfoWindow();
 
 // // Try HTML5 geolocation.
-
-
 
 // // Create the search box and link it to the UI element.
 // var input = document.getElementById("pac-input");
