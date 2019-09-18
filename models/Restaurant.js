@@ -12,11 +12,7 @@ const restaurantSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-    // TAGS NEEDS TO BE ARRAY
-    tags: {
-      type: Schema.Types.ObjectId,
-      ref: "Tag"
-    }
+    tried: Boolean
   },
   {
     timestamps: {

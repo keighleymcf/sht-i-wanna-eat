@@ -45,10 +45,15 @@ router.get("/map", (req, res, next) => {
   res.render("map");
 });
 
+//access search page to add new stuff
+router.get("/add", (req, res, next) => {
+  res.render("add");
+});
+
 //show user's list of saved restaurants
 router.get("/list", (req, res, next) => {
   const user = req.user;
-  Restaurant.find().then(restaurants => {
+  Restaurant.find({ owner: user._id }).then(restaurants => {
     res.render("list", { user: user, restaurantList: restaurants });
   });
 });
@@ -72,7 +77,8 @@ router.get("/add-result/:id", (req, res, next) => {
         display_address: response.data.display_address,
         categories: response.data.categories,
         price: response.data.price,
-        owner: req.user._id
+        owner: req.user._id,
+        tried: false
       });
       console.log("restaurant successfully added");
       res.redirect("/list");
@@ -84,7 +90,31 @@ router.get("/add-result/:id", (req, res, next) => {
 });
 
 //delete restaurant from list
+router.post("/delete-result/:objectId", (req, res, next) => {
+  const objectId = req.params.objectId;
+  Restaurant.findByIdAndDelete(objectId)
+    .then(() => {
+      console.log("restaurant successfully deleted");
+      res.redirect("/list");
+    })
+    .catch(err => {
+      console.log("Error while adding restaurant to DB");
+      next(err);
+    });
+});
 
-//add tag to restaurant
+//edit tag of restaurant
+router.post("/update_tried/:objectId", (req, res, next) => {
+  const objectId = req.params.objectId;
+  Restaurant.findByIdAndUpdate(objectId, { tried: true })
+    .then(() => {
+      console.log("restaurant marked as tried");
+      res.redirect("/list");
+    })
+    .catch(err => {
+      console.log("Error while updating restaurant");
+      next(err);
+    });
+});
 
 module.exports = router;

@@ -7,11 +7,17 @@
     <p class="rest-list-address">{{location.display_address}}</p>
     <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
     <p class="rest-list-price-range">{{price}}</p>
+    {{#if tried}}
+    {{else}}
+    <p><strong>new!</strong></p>
+    <form action="/update_tried/{{_id}}" method="post">
+      <button type="submit">I tried that sh*t</button></form>
+    {{/if}}
   </div>
   <div>
-    <form action="/add-result/{{id}}" method="get">
-      <button class="add-btn" type="submit">-</button></form>
-    {{!-- <img src="../public/images/plus-icon.png" alt="add that sh*t"> --}}
+    <form action="/delete-result/{{_id}}" method="post">
+      <button class="add-btn" type="submit">-</button>
+    </form>
   </div>
   {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
   <div class="popup">
