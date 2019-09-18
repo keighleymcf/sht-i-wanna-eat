@@ -20,7 +20,7 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 </head>
 
-<body>
+<body onload="getLocation()">
   <div class="navnav flex-column">
     <div class="collapse text-right" id="navbarToggleExternalContent">
       <div class="bg p-4">
@@ -52,15 +52,6 @@
     </nav>
   </div>
 
-
-
-
-
-
-
-
-
-
   </div>
 
   ​
@@ -71,6 +62,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   {{!-- own scripts --}}
   <script src="/javascripts/script.js"></script>
+  <script src="/javascripts/geoloc.js"></script>
   <script src="/javascripts/map-styles.js"></script>
   <script src="/javascripts/map.js"></script>
   {{!-- bootstrap scripts --}}

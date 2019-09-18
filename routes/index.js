@@ -22,7 +22,7 @@ const client = yelp.client(apiKey);
 
 router.get("/search", (req, res, next) => {
   client
-    .search({ term: req.query.q, latitude: lat, longitude: lng, limit: 10 })
+    .search({ term: req.query.q, latitude: req.query.lat, longitude: req.query.lng, limit: 10 })
     .then(response => {
       const results = response.jsonBody.businesses;
       res.render("search", { results });
