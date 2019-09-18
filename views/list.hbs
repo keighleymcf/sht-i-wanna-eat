@@ -1,11 +1,13 @@
 <h1>list of my sh*t</h1>
-<div class="list">
+<h2><a href="/my-map">see this sh*t on a map</a></h2>
 
+<div class="list">
   {{#if user}}
+  {{#if restaurantList}}
   {{#each restaurantList}}
   <div class="list-element">
     <div class="list-element-info">
-      <h2 class="rest-list-name"> {{name}} </h2>
+      <h2 class="rest-list-name"> <a href="restaurant/{{_id}}">{{name}}</a></h2>
       <p class="rest-list-address">{{display_address}}</p>
       <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
       <p class="rest-list-price-range">{{price}}</p>
@@ -29,7 +31,12 @@
   </div>
   {{/each}}
   {{else}}
+  <h2>your list is empty!</h2>
+  <h3> <a href="/map">add some sh*t to it</a></h3>
+  {{/if}}
+  {{else}}
   <div class="no-user">
-    <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
+    <h2>you're not logged in!</h2>
+    <h3><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</h3>
   </div>
   {{/if}}

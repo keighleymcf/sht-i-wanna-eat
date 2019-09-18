@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const Restaurant = require("../models/Restaurant");
-const Tag = require("../models/Tag");
 
 const axios = require("axios");
 const yelpApi = axios.create({
@@ -90,7 +89,7 @@ router.get("/add-result/:id", (req, res, next) => {
       Restaurant.create({
         yelpId: response.data.id,
         name: response.data.name,
-        display_address: response.data.display_address,
+        display_address: response.data.location.display_address,
         latitude: response.data.coordinates.latitude,
         longitude: response.data.coordinates.longitude,
         categories: response.data.categories,
@@ -121,7 +120,7 @@ router.post("/delete-result/:objectId", (req, res, next) => {
     });
 });
 
-//edit tag of restaurant
+//edit tried/new tag of restaurant
 router.post("/update_tried/:objectId", (req, res, next) => {
   const objectId = req.params.objectId;
   Restaurant.findByIdAndUpdate(objectId, {

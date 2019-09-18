@@ -88,17 +88,6 @@ function initMap() {
       objectId: restIdArray[i]
     };
   });
-  console.log(restNameArray, fullRestArray);
-
-  // var myLatlng = new google.maps.LatLng(
-  //   restaurant.latitude,
-  //   restaurant.longitude
-  // );
-
-  // var marker = new google.maps.Marker({
-  //   position: myLatlng,
-  //   title: restaurant.name
-  // });
 
   fullRestArray.forEach(restaurant => {
     var infowindow = new google.maps.InfoWindow({
@@ -115,7 +104,6 @@ function initMap() {
     marker.addListener("click", function() {
       infowindow.open(map, marker);
     });
-
     // To add the marker to the map, call setMap();
     marker.setMap(window.map);
   });

@@ -1,5 +1,6 @@
 <h1>map of my sh*t</h1>
 {{#if user}}
+{{#if restaurantList}}
 {{!-- insert map --}}
 
 <div id="map" style="height: 100vh; width: 100%;"></div>
@@ -9,13 +10,16 @@
 <input type="hidden" class="restaurantMarkerLat" value={{this.latitude}} />
 <input type="hidden" class="restaurantMarkerLong" value={{this.longitude}} />
 <input type="hidden" class="restaurantMarkerId" value={{this._id}} />
-
 {{/each}}
 
-
+{{else}}
+<h2>your map is empty!</h2>
+<h3> <a href="/map">add some sh*t to it</a></h3>
+{{/if}}
 {{else}}
 <div class="no-user">
-  <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
+  <h2>you're not logged in!</h2>
+  <h3><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</h3>
 </div>
 {{/if}}
 

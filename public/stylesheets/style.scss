@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap");
 
-
-$font-stack:"Arvo",
-serif;
+$font-stack: "Arvo", serif;
 
 $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
@@ -95,7 +93,6 @@ body {
   -o-transition: 0.9s ease-in-out;
   transition: 0.9s ease-in-out;
   cursor: pointer;
-
 
   span {
     display: block;
