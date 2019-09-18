@@ -1,12 +1,4 @@
-// let mapLat = "";
-// let mapLng = "";
-// const getMapLocation = () => {
-//   navigator.geolocation.getCurrentPosition(function(position) {
-//     mapLat = position.coords.latitude;
-//     mapLng = position.coords.longitude;
-//   });
-//   console.log(mapLat, mapLng);
-// };
+//create map
 
 function initMap() {
   var map = new google.maps.Map(document.getElementById("map"), {
@@ -15,7 +7,9 @@ function initMap() {
       lng: 13.404954
     },
     zoom: 14,
-    styles: mapStyles
+    styles: mapStyles,
+    mapTypeControl: false,
+    streetViewControl: false
   });
   window.map = map;
   infoWindow = new google.maps.InfoWindow();

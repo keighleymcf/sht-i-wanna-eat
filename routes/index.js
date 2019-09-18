@@ -64,6 +64,7 @@ router.get("/list", (req, res, next) => {
       user: user,
       restaurantList: restaurants
     });
+    console.log(user);
   });
 });
 
@@ -144,6 +145,42 @@ router.get("/restaurant/:objectId", (req, res, next) => {
     console.log(restaurant.name);
     res.render("restaurant", { user, restaurant });
   });
+});
+
+router.get("/onlyNew", (req, res) => {
+  const user = req.user;
+  Restaurant.find({
+    owner: user._id,
+    tried: false
+  })
+    .then(restaurants => {
+      res.render("list", {
+        user: user,
+        restaurantList: restaurants
+      });
+    })
+    .catch(err => {
+      console.log("Error while updating restaurant", err);
+      next(err);
+    });
+});
+
+router.get("/already", (req, res) => {
+  const user = req.user;
+  Restaurant.find({
+    owner: user._id,
+    tried: true
+  })
+    .then(restaurants => {
+      res.render("list", {
+        user: user,
+        restaurantList: restaurants
+      });
+    })
+    .catch(err => {
+      console.log("Error while updating restaurant", err);
+      next(err);
+    });
 });
 
 module.exports = router;
