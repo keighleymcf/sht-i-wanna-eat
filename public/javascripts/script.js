@@ -12,7 +12,14 @@ navIcon.onclick = () => {
   navIcon.classList.toggle('open');
 }
 
+const showHide = () => {
+  let miniWindow = document.querySelector('.miniMenu')
+  if (miniWindow)
+}
+const popUp = document.querySelector(".popUp").onclick = () => {
+  document.querySelector('.miniMenu').display = 'none';
+}
 
-const currentPos = navigator.geolocation.getCurrentPosition(pos => {
-  console.log(pos.coords)
-})
+
+
+// 

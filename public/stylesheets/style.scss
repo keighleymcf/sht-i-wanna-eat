@@ -24,6 +24,7 @@ body {
   font-size: 1rem;
 }
 
+
 /*results lists*/
 
 .list-element {
@@ -179,4 +180,14 @@ body {
 /*# sourceMappingURL=style.css.map */
 a {
   color: #00b7ff;
+}
+
+// popupMenu
+.miniMenu {
+  display: none;
+  width: 200px;
+  height: 200px;
+  font-size: 1rem;
+  border: 4px solid blueviolet;
+  background-color: white;
 }

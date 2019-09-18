@@ -16,27 +16,6 @@ const yelp = require("yelp-fusion");
 const apiKey = process.env.YELP_API_KEY;
 const client = yelp.client(apiKey);
 
-const googleMapApi = require("../public/javascripts/map")
-// const currentLocation = googleMapApi.navigator.geolocation.getCurrentPosition();
-// let lat = 52.520008;
-// let lng = 13.404954;
-// const pos = {};
-// console.log(navigator)
-// const geolocation = () => {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(position => {
-
-//       return pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-
-//       };
-
-//     })
-
-//   }
-// }
-
 router.get("/search", (req, res, next) => {
   client
     .search({
@@ -84,6 +63,7 @@ router.get("/list", (req, res, next) => {
       user: user,
       restaurantList: restaurants
     });
+    console.log(user)
   });
 });
 
@@ -148,6 +128,38 @@ router.post("/update_tried/:objectId", (req, res, next) => {
       console.log("Error while updating restaurant");
       next(err);
     });
+});
+
+router.get("/onlyNew", (req, res) => {
+  const user = req.user;
+  Restaurant.find({
+    owner: user._id,
+    tried: false
+  }).then((restaurants => {
+    res.render("list", {
+      user: user,
+      restaurantList: restaurants
+    })
+  })).catch(err => {
+    console.log("Error while updating restaurant", err);
+    next(err);
+  })
+});
+
+router.get("/already", (req, res) => {
+  const user = req.user;
+  Restaurant.find({
+    owner: user._id,
+    tried: true
+  }).then((restaurants => {
+    res.render("list", {
+      user: user,
+      restaurantList: restaurants
+    })
+  })).catch(err => {
+    console.log("Error while updating restaurant", err);
+    next(err);
+  })
 });
 
 module.exports = router;

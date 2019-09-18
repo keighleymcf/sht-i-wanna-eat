@@ -1,33 +1,3 @@
-// const yelp = require("index")
-// yelp search
-
-// document.getElementById("pac-input").onkeyup = () => {
-//   const input = document.getElementById("pac-input").value;
-//   getRestaurants(input);
-// };
-
-
-//yelp geolocation
-// const geolocation = () => {
-
-//   if (navigator.geolocation) {
-//     console.log(navigator);
-//     navigator.geolocation.getCurrentPosition(position => {
-//       return pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-
-//       };
-
-//     })
-//   }
-
-// }
-
-
-
-
-
 // create map
 
 function initMap() {
@@ -37,7 +7,9 @@ function initMap() {
       lng: 13.404954
     },
     zoom: 14,
-    styles: mapStyles
+    styles: mapStyles,
+    mapTypeControl: false,
+    streetViewControl: false
   });
   infoWindow = new google.maps.InfoWindow();
   // Try HTML5 geolocation.

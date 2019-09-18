@@ -1,21 +1,14 @@
 <h1>list of my sh*t</h1>
-<div class="list">
-
-</div>
-<ul>
-  <li>name</li>
-  <li>categories</li>
-</ul>
-<ul>
-
-  <li>price</li>
-  <li>location</li>
-  <li>opening hour</li>
-</ul>
-
-
-
 {{#if user}}
+
+<a href="/onlyNew">
+  <button class="onlyNew" type="submit"> onlyNew</button></a>
+<a href="/already">
+  <button class="already" type="submit">already</button></a>
+<a href="/list">
+  <button class="allFood" type="submit">all</button></a>
+
+
 {{#each restaurantList}}
 <div class="list-element">
   <div class="list-element-info">
@@ -23,27 +16,35 @@
     <p class="rest-list-address">{{location.display_address}}</p>
     <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
     <p class="rest-list-price-range">{{price}}</p>
+    <div>
+    </div>
     {{#if tried}}
     {{else}}
     <p><strong>new!</strong></p>
     <form action="/update_tried/{{_id}}" method="post">
       <button type="submit">I tried that sh*t</button></form>
     {{/if}}
-  </div>
-  <div>
+    <p class="popUp">+</p>
+    <div class="miniMenu">
+      <p class="popUp">x</p>
+      <a href="/mymap">go to list on map</a>
+      <form action="/delete-result/{{_id}}" method="post">
+        <button type="submit">remove this list</button>
+      </form>
+    </div>
     <form action="/delete-result/{{_id}}" method="post">
       <button class="add-btn" type="submit">-</button>
     </form>
+
+    {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
+    <div class="popup">
+      <p>deleted that sh*t</p>
+    </div>
+    {{!-- <p class="rest-list-open-now">open now</p> --}}
   </div>
-  {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
-  <div class="popup">
-    <p>deleted that sh*t</p>
+  {{/each}}
+  {{else}}
+  <div class="no-user">
+    <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
   </div>
-  {{!-- <p class="rest-list-open-now">open now</p> --}}
-</div>
-{{/each}}
-{{else}}
-<div class="no-user">
-  <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
-</div>
-{{/if}}
+  {{/if}}
