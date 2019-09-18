@@ -2,16 +2,16 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Arvo"; }
+  font-family: "Arvo", serif; }
 
 body {
-  background-image: linear-gradient(to top, #d00090 0%, #ff7f00 100%);
+  background-image: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
   height: 100vh; }
 
 /*google map searchform */
 #pac-input {
   width: 100%;
-  padding: 12px 20px;
+  padding: 2px 20px;
   font-size: 1rem; }
 
 /*results lists*/
@@ -69,24 +69,23 @@ body {
   -o-transition: 0.9s ease-in-out;
   transition: 0.9s ease-in-out;
   cursor: pointer; }
-
-#nav-icon span {
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  background: #fff;
-  border-radius: 9px;
-  opacity: 1;
-  left: 0;
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  transform: rotate(0deg);
-  -webkit-transition: 0.5s ease-in-out;
-  -moz-transition: 0.5s ease-in-out;
-  -o-transition: 0.5s ease-in-out;
-  transition: 0.5s ease-in-out; }
+  #nav-icon span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #fff;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out; }
 
 #nav-icon span:nth-child(1) {
   top: 0px; }

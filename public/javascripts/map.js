@@ -6,6 +6,28 @@
 //   getRestaurants(input);
 // };
 
+
+//yelp geolocation
+// const geolocation = () => {
+
+//   if (navigator.geolocation) {
+//     console.log(navigator);
+//     navigator.geolocation.getCurrentPosition(position => {
+//       return pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude,
+
+//       };
+
+//     })
+//   }
+
+// }
+
+
+
+
+
 // create map
 
 function initMap() {
@@ -21,21 +43,24 @@ function initMap() {
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      function(position) {
-        var pos = {
+      function (position) {
+        let pos = {
           lat: position.coords.latitude,
           lng: position.coords.longitude
         };
-
         console.log(pos);
+
         infoWindow.setPosition(pos);
         infoWindow.setContent("you are here");
         infoWindow.open(map);
         map.setCenter(pos);
+
       },
-      function() {
+      function () {
         handleLocationError(true, infoWindow, map.getCenter());
       }
+
+
     );
   } else {
     // Browser doesn't support Geolocation
@@ -45,9 +70,9 @@ function initMap() {
   function handleLocationError(browserHasGeolocation, infoWindow, pos) {
     infoWindow.setPosition(pos);
     infoWindow.setContent(
-      browserHasGeolocation
-        ? "Error: The Geolocation service failed."
-        : "Error: Your browser doesn't support geolocation."
+      browserHasGeolocation ?
+      "Error: The Geolocation service failed." :
+      "Error: Your browser doesn't support geolocation."
     );
     infoWindow.open(map);
   }
@@ -57,14 +82,14 @@ function initMap() {
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
   // Bias the SearchBox results towards current map's viewport.
-  map.addListener("bounds_changed", function() {
+  map.addListener("bounds_changed", function () {
     searchBox.setBounds(map.getBounds());
   });
 
   var markers = [];
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
-  searchBox.addListener("places_changed", function() {
+  searchBox.addListener("places_changed", function () {
     var places = searchBox.getPlaces();
 
     if (places.length == 0) {
@@ -72,14 +97,14 @@ function initMap() {
     }
 
     // Clear out the old markers.
-    markers.forEach(function(marker) {
+    markers.forEach(function (marker) {
       marker.setMap(null);
     });
     markers = [];
 
     // For each place, get the icon, name and location.
     var bounds = new google.maps.LatLngBounds();
-    places.forEach(function(place) {
+    places.forEach(function (place) {
       if (!place.geometry) {
         console.log("Returned place contains no geometry");
         return;

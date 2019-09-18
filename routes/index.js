@@ -14,18 +14,42 @@ const yelpApi = axios.create({
 const yelp = require("yelp-fusion");
 
 const apiKey = process.env.YELP_API_KEY;
-
-let lat = 52.520008;
-let lng = 13.404954;
-
 const client = yelp.client(apiKey);
 
+const googleMapApi = require("../public/javascripts/map")
+// const currentLocation = googleMapApi.navigator.geolocation.getCurrentPosition();
+// let lat = 52.520008;
+// let lng = 13.404954;
+// const pos = {};
+// console.log(navigator)
+// const geolocation = () => {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(position => {
+
+//       return pos = {
+//         lat: position.coords.latitude,
+//         lng: position.coords.longitude,
+
+//       };
+
+//     })
+
+//   }
+// }
+
 router.get("/search", (req, res, next) => {
-  client
-    .search({ term: req.query.q, latitude: lat, longitude: lng, limit: 10 })
+  googleMapApi.currentPos(pos)
+    .then(client.search({
+      term: req.query.q,
+      latitude: pos.lat,
+      longitude: pos.lng,
+      limit: 10
+    }))
     .then(response => {
       const results = response.jsonBody.businesses;
-      res.render("search", { results });
+      res.render("search", {
+        results
+      });
     })
     .catch(err => {
       console.log("Error while retrieving data: ", err);
@@ -49,7 +73,10 @@ router.get("/map", (req, res, next) => {
 router.get("/list", (req, res, next) => {
   const user = req.user;
   Restaurant.find().then(restaurants => {
-    res.render("list", { user: user, restaurantList: restaurants });
+    res.render("list", {
+      user: user,
+      restaurantList: restaurants
+    });
   });
 });
 
@@ -57,7 +84,9 @@ router.get("/list", (req, res, next) => {
 router.get("/my-map", (req, res, next) => {
   const user = req.user;
 
-  res.render("my-map", { user });
+  res.render("my-map", {
+    user
+  });
 });
 
 //add new restaurant to list
