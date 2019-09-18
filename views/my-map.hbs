@@ -1,12 +1,25 @@
 <h1>map of my sh*t</h1>
 {{#if user}}
 {{!-- insert map --}}
+
 <div id="map" style="height: 100vh; width: 100%;"></div>
+
+{{#each restaurantList }}
+<input type="hidden" class="restaurantMarker" value={{this.name}} />
+<input type="hidden" class="restaurantMarkerLat" value={{this.latitude}} />
+<input type="hidden" class="restaurantMarkerLong" value={{this.longitude}} />
+<input type="hidden" class="restaurantMarkerId" value={{this._id}} />
+
+{{/each}}
+
+
 {{else}}
 <div class="no-user">
   <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
 </div>
 {{/if}}
+
 <script type="text/javascript"
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7K8xVQEkyXx41h7IqJCPSuhwaipoq5jM&libraries=places&callback=initMap&language=en&region=de"
-  async defer></script>
+  async defer>
+  </script>

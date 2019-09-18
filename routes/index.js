@@ -16,26 +16,7 @@ const yelp = require("yelp-fusion");
 const apiKey = process.env.YELP_API_KEY;
 const client = yelp.client(apiKey);
 
-const googleMapApi = require("../public/javascripts/map")
-// const currentLocation = googleMapApi.navigator.geolocation.getCurrentPosition();
-// let lat = 52.520008;
-// let lng = 13.404954;
-// const pos = {};
-// console.log(navigator)
-// const geolocation = () => {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(position => {
-
-//       return pos = {
-//         lat: position.coords.latitude,
-//         lng: position.coords.longitude,
-
-//       };
-
-//     })
-
-//   }
-// }
+const googleMapApi = require("../public/javascripts/map");
 
 router.get("/search", (req, res, next) => {
   client
@@ -90,9 +71,13 @@ router.get("/list", (req, res, next) => {
 //show user's map of saved restaurants !!!!!INCOMPLETE!!!!!!
 router.get("/my-map", (req, res, next) => {
   const user = req.user;
-
-  res.render("my-map", {
-    user
+  Restaurant.find({
+    owner: user._id
+  }).then(restaurants => {
+    res.render("my-map", {
+      user: user,
+      restaurantList: restaurants
+    });
   });
 });
 
@@ -106,6 +91,8 @@ router.get("/add-result/:id", (req, res, next) => {
         yelpId: response.data.id,
         name: response.data.name,
         display_address: response.data.display_address,
+        latitude: response.data.coordinates.latitude,
+        longitude: response.data.coordinates.longitude,
         categories: response.data.categories,
         price: response.data.price,
         owner: req.user._id,
@@ -138,8 +125,8 @@ router.post("/delete-result/:objectId", (req, res, next) => {
 router.post("/update_tried/:objectId", (req, res, next) => {
   const objectId = req.params.objectId;
   Restaurant.findByIdAndUpdate(objectId, {
-      tried: true
-    })
+    tried: true
+  })
     .then(() => {
       console.log("restaurant marked as tried");
       res.redirect("/list");
@@ -148,6 +135,16 @@ router.post("/update_tried/:objectId", (req, res, next) => {
       console.log("Error while updating restaurant");
       next(err);
     });
+});
+
+// indiv rest view
+router.get("/restaurant/:objectId", (req, res, next) => {
+  const user = req.user;
+  const objectId = req.params.objectId;
+  Restaurant.findById(objectId).then(restaurant => {
+    console.log(restaurant.name);
+    res.render("restaurant", { user, restaurant });
+  });
 });
 
 module.exports = router;

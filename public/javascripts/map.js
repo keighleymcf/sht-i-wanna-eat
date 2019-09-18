@@ -17,6 +17,7 @@ function initMap() {
     zoom: 14,
     styles: mapStyles
   });
+  window.map = map;
   infoWindow = new google.maps.InfoWindow();
   // Try HTML5 geolocation.
   if (navigator.geolocation) {
@@ -51,6 +52,71 @@ function initMap() {
     );
     infoWindow.open(map);
   }
-
   map.controls[google.maps.ControlPosition.TOP_LEFT];
+
+  let restNameArray = [];
+  let restLatArray = [];
+  let restLongArray = [];
+  let restIdArray = [];
+
+  [...document.getElementsByClassName("restaurantMarker")].forEach(
+    restaurant => {
+      restNameArray.push(restaurant.value);
+    }
+  );
+  [...document.getElementsByClassName("restaurantMarkerLat")].forEach(
+    restaurant => {
+      restLatArray.push(restaurant.value);
+    }
+  );
+  [...document.getElementsByClassName("restaurantMarkerLong")].forEach(
+    restaurant => {
+      restLongArray.push(restaurant.value);
+    }
+  );
+  [...document.getElementsByClassName("restaurantMarkerId")].forEach(
+    restaurant => {
+      restIdArray.push(restaurant.value);
+    }
+  );
+
+  let fullRestArray = restNameArray.map((rest, i) => {
+    return {
+      name: rest,
+      lat: restLatArray[i],
+      long: restLongArray[i],
+      objectId: restIdArray[i]
+    };
+  });
+  console.log(restNameArray, fullRestArray);
+
+  // var myLatlng = new google.maps.LatLng(
+  //   restaurant.latitude,
+  //   restaurant.longitude
+  // );
+
+  // var marker = new google.maps.Marker({
+  //   position: myLatlng,
+  //   title: restaurant.name
+  // });
+
+  fullRestArray.forEach(restaurant => {
+    var infowindow = new google.maps.InfoWindow({
+      content: `<a href="/restaurant/${restaurant.objectId}">${restaurant.name}</a>`
+    });
+
+    var myLatlng = new google.maps.LatLng(restaurant.lat, restaurant.long);
+
+    var marker = new google.maps.Marker({
+      position: myLatlng,
+      title: restaurant.name,
+      animation: google.maps.Animation.DROP
+    });
+    marker.addListener("click", function() {
+      infowindow.open(map, marker);
+    });
+
+    // To add the marker to the map, call setMap();
+    marker.setMap(window.map);
+  });
 }

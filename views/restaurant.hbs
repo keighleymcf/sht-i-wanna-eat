@@ -1,20 +1,20 @@
-<h1>list of my sh*t</h1>
+{{#if user}}
+{{#if restaurant}}
+<h1>look at this sh*t</h1>
 <div class="list">
-
-  {{#if user}}
-  {{#each restaurantList}}
   <div class="list-element">
     <div class="list-element-info">
-      <h2 class="rest-list-name"> {{name}} </h2>
-      <p class="rest-list-address">{{display_address}}</p>
+      <h2 class="rest-list-name"> {{this.name}} </h2>
+      <p class="rest-list-address">{{this.display_address}}</p>
       <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
-      <p class="rest-list-price-range">{{price}}</p>
+      <p class="rest-list-price-range">{{this.price}}</p>
       {{#if tried}}
       {{else}}
       <p><strong>new!</strong></p>
       <form action="/update_tried/{{_id}}" method="post">
         <button type="submit">I tried that sh*t</button></form>
       {{/if}}
+      <a href="/list">back to my list of sh*t</a>
     </div>
     <div>
       <form action="/delete-result/{{_id}}" method="post">
@@ -27,8 +27,9 @@
     </div>
     {{!-- <p class="rest-list-open-now">open now</p> --}}
   </div>
-  {{/each}}
+  {{/if}}
   {{else}}
+  <h1>sh*t I wanna eat</h1>
   <div class="no-user">
     <p><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</p>
   </div>

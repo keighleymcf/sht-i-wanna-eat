@@ -6,6 +6,8 @@ const restaurantSchema = new Schema(
     yelpId: String,
     name: String,
     display_address: Array,
+    latitude: Number,
+    longitude: Number,
     categories: Array,
     price: String,
     owner: {
