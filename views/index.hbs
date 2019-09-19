@@ -1,6 +1,11 @@
 <div class="main-page">
   <h1 class="title-text">sh*t I wanna eat</h1>
-
+  <div class="login-message">
+    {{message}}
+    {{#if user}}
+    <p>you're logged in!</p>
+    {{/if}}
+  </div>
   <div class="plate-box">
     {{!-- add plate image --}}
     {{#if user}}

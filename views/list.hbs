@@ -1,48 +1,49 @@
 <h1>list of my sh*t</h1>
-<h2><a href="/my-map">see this sh*t on a map</a></h2>
+<a href="/my-map"> <button class="big-btn" type="submit">
+    <h3>see this sh*t on a map</h3><br><img src="/images/food-pin-white.png" alt="">
+  </button></a>
 
 {{#if user}}
 {{#if restaurantList}}
-<a href="/onlyNew">
-  <button class="onlyNew" type="submit"> onlyNew</button></a>
-<a href="/already">
-  <button class="already" type="submit">already</button></a>
-<a href="/list">
-  <button class="allFood" type="submit">all</button></a>
-
-{{#each restaurantList}}
-<div class="list-element">
-  <div class="list-element-info">
-    <h2 class="rest-list-name"> <a href="restaurant/{{_id}}">{{name}}</a></h2>
-    <p class="rest-list-address">{{display_address}}</p>
-    <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
-    <p class="rest-list-price-range">{{price}}</p>
-    {{#if tried}}
-    {{else}}
-    <p><strong>new!</strong></p>
-    <form action="/update_tried/{{_id}}" method="post">
-      <button type="submit">I tried that sh*t</button></form>
-    {{/if}}
-    <p class="popUp">+</p>
-    <div class="miniMenu">
-      <p class="hideUp">◆</p>
-      <a href="/mymap">go to list on map</a>
-      <form action="/delete-result/{{_id}}" method="post">
-        <button type="submit">remove this list</button>
-      </form>
+<div class="container filter-container">
+  <div class="accordion">
+    <div class="accordion-item filter-accordion">
+      <p>filter your list</p>
+      <div class="content filter">
+        <a class="filter-item" href="/onlyNew">
+          <button class="tried-btn onlyNew accordion-btn" type="submit">new sh*t</button></a> <br>
+        <a class="filter-item" href="/already">
+          <button class="tried-btn already  accordion-btn" type="submit">sh*t I already tried</button></a> <br>
+        <a class="filter-item" href="/list">
+          <button class="tried-btn allFood  accordion-btn" type="submit">all my sh*t</button></a>
+      </div>
     </div>
-    <form action="/delete-result/{{_id}}" method="post">
-      <button class="add-btn" type="submit">-</button>
-    </form>
   </div>
-
-  {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
-  {{!-- <div class="popup">
-    <p>deleted that sh*t</p>
-  </div> --}}
-  {{!-- <p class="rest-list-open-now">open now</p> --}}
 </div>
-{{/each}}
+
+<div class="container">
+  <div class="accordion">
+    {{#each restaurantList}}
+    <div class="accordion-item rest-accordion">
+      <a>{{name}}</a>
+      <div class="content">
+        <p class="rest-list-address">{{display_address}}</p>
+        <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
+        <p class="rest-list-price-range">{{price}}</p>
+        {{#if tried}}
+        {{else}}
+        <div class="new-label"><strong>new!</strong></div>
+        <form action="/update_tried/{{_id}}" method="post">
+          <button class="tried-btn accordion-btn" type="submit">I tried that sh*t</button></form>
+        {{/if}}
+        <form action="/delete-result/{{_id}}" method="post">
+          <button class="delete-btn accordion-btn" type="submit">delete from my list</button>
+        </form>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div>
 
 {{else}}
 <h2>your list is empty!</h2>

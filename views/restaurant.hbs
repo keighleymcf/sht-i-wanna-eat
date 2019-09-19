@@ -10,28 +10,28 @@
       <p class="rest-list-price-range">{{restaurant.price}}</p>
       {{#if restaurant.tried}}
       {{else}}
-      <p><strong>new!</strong></p>
-      <form action="/update_tried/{{restaurant._id}}" method="post">
-        <button type="submit">I tried that sh*t</button></form>
+      <div class="new-label"><strong>new!</strong></div>
+      <form action="/update_tried/{{_id}}" method="post">
+        <button class="tried-btn accordion-btn" type="submit">I tried that sh*t</button></form>
       {{/if}}
-      <a href="/list">back to my list of sh*t</a>
-    </div>
-    <div>
-      <form action="/delete-result/{{restaurant._id}}" method="post">
-        <button class="add-btn" type="submit">-</button>
+
+      <form action="/delete-result/{{_id}}" method="post">
+        <button class="delete-btn accordion-btn" type="submit">delete from my list</button>
       </form>
     </div>
-    {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
-    <div class="popup">
-      <p>deleted that sh*t</p>
-    </div>
-    {{!-- <p class="rest-list-open-now">open now</p> --}}
   </div>
-  {{/if}}
-  {{else}}
-  <h1>sh*t I wanna eat</h1>
-  <div class="no-user">
-    <h2>you're not logged in!</h2>
-    <h3><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</h3>
-  </div>
-  {{/if}}
+</div>
+
+<div class="back-to-list">
+  <a href="/list"> <button class="big-btn" type="submit">
+      <h3>back to my list of sh*t</h3>
+    </button></a>
+</div>
+{{/if}}
+{{else}}
+<h1>sh*t I wanna eat</h1>
+<div class="no-user">
+  <h2>you're not logged in!</h2>
+  <h3><a href="/auth/signup">sign up</a> or <a href="/auth/login">log in</a> to see sh*t you wanna eat</h3>
+</div>
+{{/if}}
