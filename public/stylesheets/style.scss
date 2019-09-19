@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap");
 
-$font-stack: "Arvo", serif;
+
+$font-stack:"Arvo",
+serif;
 
 $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
@@ -12,7 +14,8 @@ $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
 body {
   background-image: $background;
-  height: 100vh;
+
+  background-repeat: repeat-y;
 }
 
 /*google map searchform */
@@ -21,6 +24,12 @@ body {
   padding: 2px 20px;
   font-size: 1rem;
 }
+
+ul {
+  list-style-type: none;
+}
+
+
 
 /*results lists*/
 
@@ -72,18 +81,42 @@ body {
   outline: none;
 }
 
-// .navbar-dark,
-// .navbar-toggler {
-//   border-color: none;
-// }
+.wrapper {
+  height: 0%;
+  transition: all 300ms ease-in-out;
+  padding-top: 0;
+  top: 0;
+  padding: 0;
+}
 
-/*layout.hbs elements*/
+.background--blur {
+  background: red;
+}
+
+.menu--off {
+  position: absolute;
+  right: -100%;
+  width: 100%;
+  display: block;
+  background: rgba(255, 255, 255, 0.8);
+  min-height: 0%;
+  height: 50%;
+  margin: 0;
+  transition: all 300ms;
+}
+
+.menu--on {
+  right: 0;
+  box-shadow: 8px 8px 20px 0 rgba(0, 0, 0, 0.2);
+  transition: all 300ms;
+}
 
 #nav-icon {
   width: 30px;
-  height: 10px;
-  position: relative;
+  height: 5%;
+  position: absolute;
   margin: 0px auto;
+  right: 5%;
   -webkit-transform: rotate(0deg);
   -moz-transform: rotate(0deg);
   -o-transform: rotate(0deg);
@@ -93,26 +126,27 @@ body {
   -o-transition: 0.9s ease-in-out;
   transition: 0.9s ease-in-out;
   cursor: pointer;
-
-  span {
-    display: block;
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    background: #fff;
-    border-radius: 9px;
-    opacity: 1;
-    left: 0;
-    -webkit-transform: rotate(0deg);
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    transform: rotate(0deg);
-    -webkit-transition: 0.5s ease-in-out;
-    -moz-transition: 0.5s ease-in-out;
-    -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
-  }
 }
+
+span {
+  display: block;
+  position: absolute;
+  height: 5%;
+  width: 100%;
+  background: #fff;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: 0.5s ease-in-out;
+  -moz-transition: 0.5s ease-in-out;
+  -o-transition: 0.5s ease-in-out;
+  transition: 0.5s ease-in-out;
+}
+
 
 #nav-icon span:nth-child(1) {
   top: 0px;
@@ -128,9 +162,9 @@ body {
 }
 
 #nav-icon.open span:nth-child(1) {
-  top: 18px;
+  top: 0px;
   width: 0%;
-  left: 50%;
+  right: 50%;
 }
 
 #nav-icon.open span:nth-child(2) {
@@ -150,13 +184,14 @@ body {
 #nav-icon.open span:nth-child(4) {
   top: 15px;
   width: 0%;
-  left: 20%;
+  right: 20%;
 }
 
 /*home*/
 
 .title-text,
 .h1 {
+  margin: 0;
   color: azure;
   font-size: 4rem;
   font-weight: 900;
@@ -173,14 +208,10 @@ body {
 
 /*map view*/
 
-/*# sourceMappingURL=style.css.map */
-a {
-  color: #00b7ff;
-}
 
 // popupMenu
 .miniMenu {
-  display: none;
+  display: block;
   width: 200px;
   height: 200px;
   font-size: 1rem;
