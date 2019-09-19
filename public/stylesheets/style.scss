@@ -23,6 +23,10 @@ p {
   color: azure;
 }
 
+a {
+  color: azure;
+}
+
 /*searchform */
 .search-container {
   display: flex;
@@ -99,16 +103,39 @@ ul {
   display: none;
 }
 
-// popupMenu
-.miniMenu {
-  display: block;
-  width: 200px;
-  height: 200px;
-  font-size: 1rem;
-  border: 4px solid blueviolet;
-  border-radius: 10px;
-  background-color: white;
-  color: slategray;
+.accordion-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  font-size: 0.9rem;
+  color: white;
+}
+
+.accordion-btn.active,
+.accordion-btn:hover,
+.accordion-btn:hover::after {
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.big-btn {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  padding: 10px;
+  margin: 30px 10px;
+}
+
+.big-btn.active,
+.big-btn:hover,
+.big-btn:hover::after {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.big-btn h3 {
+  line-height: 0rem;
+  padding-top: 10px;
 }
 
 /*accordion*/
@@ -127,18 +154,10 @@ html {
 
 .container {
   margin: 0 auto;
-  padding: 4rem;
-  width: 48rem;
 }
 
-h3 {
-  font-size: 1.75rem;
-  color: #373d51;
-  padding: 1.3rem;
-  margin: 0;
-}
-
-.accordion a {
+.rest-accordion a,
+.filter-accordion p {
   position: relative;
   display: -webkit-box;
   display: -webkit-flex;
@@ -150,58 +169,74 @@ h3 {
   -ms-flex-direction: column;
   flex-direction: column;
   width: 100%;
-  padding: 1rem 3rem 1rem 1rem;
-  color: #7288a2;
+  padding: 1rem;
+  color: azure;
   font-size: 1.15rem;
-  font-weight: 400;
-  border-bottom: 1px solid #e5e5e5;
 }
 
-.accordion a:hover,
-.accordion a:hover::after {
+.rest-accordion a,
+.filter-accordion p {
+  border-bottom: 1px solid azure;
+}
+
+.filter-accordion p {
+  border-bottom: 1px solid rgba(240, 255, 255, 0.5);
+}
+
+.filter-container {
+  padding: 15px;
+}
+
+.rest-accordion a:hover,
+.rest-accordion a:hover::after,
+.filter-accordion p:hover,
+.filter-accordion p:hover::after {
   cursor: pointer;
-  color: #03b5d2;
 }
 
-.accordion a:hover::after {
-  border: 1px solid #03b5d2;
+.rest-accordion a:hover::after {
+  border: 1px solid azure;
 }
 
-.accordion a.active {
-  color: #03b5d2;
-  border-bottom: 1px solid #03b5d2;
+.filter-accordion p:hover::after,
+.filter-accordion p.active {
+  border-bottom: 1px solid rgb(240, 255, 255);
 }
 
-.accordion a::after {
-  font-family: "Ionicons";
-  content: "\f218";
+.rest-accordion a.active {
+  border-bottom: 1px solid azure;
+}
+
+.rest-accordion a::after,
+.filter-accordion p::after {
+  content: "+";
   position: absolute;
   float: right;
   right: 1rem;
   font-size: 1rem;
-  color: #7288a2;
+  color: azure;
   padding: 5px;
   width: 30px;
   height: 30px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  border: 1px solid #7288a2;
+  border: 1px solid azure;
   text-align: center;
 }
 
-.accordion a.active::after {
-  font-family: "Ionicons";
-  content: "\f209";
-  color: #03b5d2;
-  border: 1px solid #03b5d2;
+.rest-accordion a.active::after,
+.filter-accordion p.active::after {
+  content: "-";
+  color: azure;
+  border: 1px solid azure;
 }
 
 .accordion .content {
   opacity: 0;
   padding: 0 1rem;
   max-height: 0;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid azure;
   overflow: hidden;
   clear: both;
   -webkit-transition: all 0.2s ease 0.15s;
@@ -211,7 +246,7 @@ h3 {
 
 .accordion .content p {
   font-size: 1rem;
-  font-weight: 300;
+  color: white;
 }
 
 .accordion .content.active {
@@ -221,6 +256,12 @@ h3 {
   -webkit-transition: all 0.35s ease 0.15s;
   -o-transition: all 0.35s ease 0.15s;
   transition: all 0.35s ease 0.15s;
+}
+
+.new-label {
+  transform: rotate(30deg) translate(140px, -100px);
+  color: white;
+  font-weight: bold;
 }
 
 /*nav*/
@@ -291,7 +332,7 @@ h3 {
   cursor: pointer;
 }
 
-span {
+.nav-span {
   display: block;
   position: absolute;
   height: 5%;
@@ -363,4 +404,13 @@ span {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+/*restaurant*/
+
+.back-to-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 40px 0;
 }

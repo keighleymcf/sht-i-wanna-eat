@@ -36,6 +36,7 @@ tabmenu();
 // list accordion
 
 const items = document.querySelectorAll(".accordion a");
+const filterItem = document.querySelectorAll(".filter-accordion p");
 
 function toggleAccordion() {
   console.log("clicked");
@@ -44,3 +45,4 @@ function toggleAccordion() {
 }
 
 items.forEach(item => item.addEventListener("click", toggleAccordion));
+filterItem.forEach(item => item.addEventListener("click", toggleAccordion));
