@@ -1,7 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap");
 
-$font-stack: "Arvo",
-serif;
+$font-stack: "Arvo", serif;
 
 $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
@@ -12,11 +11,12 @@ $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
   font-size: 16xp;
 }
 
-
 body {
   //width: 100%;
-  //background-image: $background;
+  background-image: $background;
   margin: 0;
+  padding: 15px;
+  height: 100vh;
 }
 
 // body:after {
@@ -31,11 +31,9 @@ body {
 // }
 #wrapper {
   width: 100%;
-  background-image: $background;
+  //background-image: $background;
   padding: 15px;
 }
-
-
 
 #wrapper:after {
   position: fixed;
@@ -45,10 +43,8 @@ body {
   height: 100%;
   content: "";
   z-index: -1;
-  background-image: $background;
+  // background-image: $background;
 }
-
-
 
 /*google map searchform */
 
@@ -118,7 +114,6 @@ ul {
   align-items: center;
 }
 
-
 .main-index {
   display: flex;
   flex-direction: column;
@@ -158,7 +153,6 @@ ul {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-
 }
 
 .swipe {
@@ -172,13 +166,11 @@ ul {
   justify-content: space-evenly;
   align-items: center;
 
-
   .form {
     display: inline-flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-
   }
 
   a:link {
@@ -188,12 +180,10 @@ ul {
   a:visited {
     color: darkblue;
   }
-
 }
 
 .fork {
   width: 11%;
-
 }
 
 .fork img {
@@ -203,13 +193,11 @@ ul {
 
 .knife {
   width: 8%;
-
 }
 
 .knife img {
   width: 100%;
   height: 100%;
-
 }
 
 .arrowU img {
@@ -219,7 +207,6 @@ ul {
 
 .arrowU {
   width: 10%;
-
 }
 
 .arrowD img {
@@ -229,9 +216,7 @@ ul {
 
 .arrowD {
   width: 10%;
-
 }
-
 
 /*results lists*/
 
@@ -425,7 +410,6 @@ html {
 
 /*nav*/
 
-
 .bg .p-4 {
   padding: 0;
   margin: 0;
@@ -455,7 +439,6 @@ html {
 .navMenu li {
   padding: 5% 0%;
 }
-
 
 .menu--off {
   position: absolute;
@@ -498,8 +481,24 @@ a:visited {
   }
 }
 
+#nav-icon span::after {
+  content: "+";
+  position: absolute;
+  float: right;
+  right: 1rem;
+  font-size: 1rem;
+  color: azure;
+  padding: 5px;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
 
-
+#nav-icon span.active::after {
+  content: "-";
+  color: azure;
+  font-size: 4rem;
+}
 
 #nav-icon {
   z-index: 30;
@@ -519,7 +518,7 @@ a:visited {
   cursor: pointer;
 }
 
-.nav-span {
+#nav-icon > span {
   display: block;
   position: absolute;
   height: 5%;
@@ -592,14 +591,6 @@ a:visited {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-
-/*map view*/
-#map {
-  z-index: 1;
-  position: relative;
-
 }
 
 /*restaurant*/
