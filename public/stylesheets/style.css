@@ -73,6 +73,9 @@ ul {
   justify-content: space-evenly;
   align-items: center; }
 
+.swipe {
+  color: rgba(145, 145, 145, 0.8); }
+
 .contentPlate-log-sign {
   height: 100%;
   display: inline-flex;
