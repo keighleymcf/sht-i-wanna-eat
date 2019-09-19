@@ -1,5 +1,7 @@
 require("dotenv").config();
 
+const sslRedirect = require("heroku-ssl-redirect");
+
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const express = require("express");
@@ -14,16 +16,16 @@ const MongoStore = require("connect-mongo")(session);
 const flash = require("connect-flash");
 
 mongoose
-  .connect("mongodb://localhost/sht-i-wanna-eat", {
+  .connect(process.env.MONGODB_URI, {
     useNewUrlParser: true
   })
   .then(x => {
     console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
+      `Connected to Mongo! Database name: "${x.connections[0].name}"`
     );
   })
   .catch(err => {
-    console.error("Error connecting to mongo", err);
+    console.error("Error connecting to mongo", err);
   });
 
 const app_name = require("./package.json").name;
@@ -34,6 +36,8 @@ const debug = require("debug")(
 const app = express();
 
 // Middleware Setup
+// enable ssl redirect
+app.use(sslRedirect(["other", "development", "production"]));
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(
