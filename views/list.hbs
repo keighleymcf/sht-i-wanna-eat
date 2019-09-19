@@ -3,6 +3,7 @@
 
 {{#if user}}
 {{#if restaurantList}}
+<h3>filter your list</h3>
 <a href="/onlyNew">
   <button class="tried-btn onlyNew" type="submit">new sh*t</button></a>
 <a href="/already">
@@ -10,39 +11,29 @@
 <a href="/list">
   <button class="tried-btn allFood" type="submit">all my sh*t</button></a>
 
-{{#each restaurantList}}
-<div class="list-element">
-  <div class="list-element-info">
-    <h2 class="rest-list-name"> <a href="restaurant/{{_id}}">{{name}}</a></h2>
-    <p class="rest-list-address">{{display_address}}</p>
-    <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
-    <p class="rest-list-price-range">{{price}}</p>
-    {{#if tried}}
-    {{else}}
-    <p><strong>new!</strong></p>
-    <form action="/update_tried/{{_id}}" method="post">
-      <button type="submit">I tried that sh*t</button></form>
-    {{/if}}
-    <p class="popUp">+</p>
-    <div class="miniMenu">
-      <p class="hideUp">◆</p>
-      <a href="/mymap">go to list on map</a>
-      <form action="/delete-result/{{_id}}" method="post">
-        <button type="submit">remove this list</button>
-      </form>
+<div class="container">
+  <div class="accordion">
+    {{#each restaurantList}}
+    <div class="accordion-item">
+      <a>{{name}}</a>
+      <div class="content">
+        <p class="rest-list-address">{{display_address}}</p>
+        <p class="rest-list-type">{{#each categories}}{{title}} {{/each}}</p>
+        <p class="rest-list-price-range">{{price}}</p>
+        {{#if tried}}
+        {{else}}
+        <p><strong>new!</strong></p>
+        <form action="/update_tried/{{_id}}" method="post">
+          <button type="submit">I tried that sh*t</button></form>
+        {{/if}}
+        <form action="/delete-result/{{_id}}" method="post">
+          <button type="submit">delete this sh*t</button>
+        </form>
+      </div>
     </div>
-    <form action="/delete-result/{{_id}}" method="post">
-      <button class="add-btn" type="submit">-</button>
-    </form>
+    {{/each}}
   </div>
-
-  {{!-- add different onclick="togglepopup()" popups: added that shit if logged in, or link to log in if not --}}
-  {{!-- <div class="popup">
-    <p>deleted that sh*t</p>
-  </div> --}}
-  {{!-- <p class="rest-list-open-now">open now</p> --}}
 </div>
-{{/each}}
 
 {{else}}
 <h2>your list is empty!</h2>
