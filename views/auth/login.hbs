@@ -1,27 +1,47 @@
-<h2>Login</h2>
+<div class="main-index">
+  <div class="title-index">
+    <h1 class="title-text">sh*t I wanna eat</h1>
+  </div>
+  <div class="dish">
+    <div class="fork">
+      <img src="/images/fork.png" alt="fork">
+    </div>
+    <div class="plate">
 
-<div class="plate-box">
-  <form action="/auth/login" method="POST" id="form-container">
-    <label for="username">e-mail</label>
-    <input id="username" type="text" name="username" placeholder="hungry@feedme.com">
+      <div class="contentPlate-log-sign">
+        <h2>Login</h2>
+        <form class="form" action="/auth/login" method="POST" id="form-container">
+          <label for="username">e-mail</label>
+          <input id="username" type="text" name="username" placeholder="hungry@feedme.com">
 
-    <br><br>
+          <label for="password">password</label>
+          <input id="password" type="password" name="password" placeholder="Your password">
 
-    <label for="password">password</label>
-    <input id="password" type="password" name="password" placeholder="Your password">
-    <br>
-    {{#if message }}
-    <div class="error-message">{{ message }}</div>
+          {{#if message }}
+          <div class="error-message">{{ message }}</div>
+          {{/if}}
+
+          <button>Login</button>
+        </form>
+        <a href="/auth/google"><button>Or login with Google</button></a>
+        <p class="account-message">
+          No account yet?
+          <a href="/auth/signup">Signup</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="knife">
+      <img src="/images/knife.png" alt="knife">
+    </div>
+  </div>
+  <div class="goToList">
+    {{#if user}}
+    <h2>
+      <a href="/list">list of my sh*t</a>
+    </h2>
     {{/if}}
+  </div>
 
-    <br><br>
-
-    <button>Login</button>
-  </form>
 </div>
-
-<a href="/auth/google"><button>Or login with Google</button></a>
-<p class="account-message">
-  No account yet?
-  <a href="/auth/signup">Signup</a>
-</p>
+</div>
