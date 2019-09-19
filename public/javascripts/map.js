@@ -1,3 +1,5 @@
+// import { url } from "inspector";
+
 //create map
 
 function initMap() {
@@ -47,6 +49,7 @@ function initMap() {
     infoWindow.open(map);
   }
   map.controls[google.maps.ControlPosition.TOP_LEFT];
+  const icon = "../images/food-pin.png";
 
   let restNameArray = [];
   let restLatArray = [];
@@ -93,6 +96,7 @@ function initMap() {
     var marker = new google.maps.Marker({
       position: myLatlng,
       title: restaurant.name,
+      icon: icon,
       animation: google.maps.Animation.DROP
     });
     marker.addListener("click", function() {

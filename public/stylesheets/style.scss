@@ -1,8 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Arvo:400,700&display=swap");
 
-
-$font-stack:"Arvo",
-serif;
+$font-stack: "Arvo", serif;
 
 $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
@@ -14,22 +12,63 @@ $background: linear-gradient(to top, #d00090 15%, #ff7f00 70%);
 
 body {
   background-image: $background;
-
-  background-repeat: repeat-y;
+  padding: 15px;
 }
 
-/*google map searchform */
-#pac-input {
+h1,
+h2,
+h3,
+h4,
+p {
+  color: azure;
+}
+
+/*searchform */
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 2px 20px;
+}
+
+.search-bar {
+  margin: 10px 0;
+  width: 100%;
+  border-radius: 10px;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#yelp-search-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border: none;
+}
+
+#yelp-input {
+  width: 100%;
   font-size: 1rem;
+  margin: 5%;
+  border: none;
+}
+
+.search-btn {
+  background: white;
+  border: none;
+  color: slategray;
+  margin: 5%;
 }
 
 ul {
   list-style-type: none;
 }
-
-
 
 /*results lists*/
 
@@ -58,6 +97,20 @@ ul {
 
 .popup {
   display: none;
+}
+
+/*map*/
+
+// popupMenu
+.miniMenu {
+  display: block;
+  width: 200px;
+  height: 200px;
+  font-size: 1rem;
+  border: 4px solid blueviolet;
+  border-radius: 10px;
+  background-color: white;
+  color: slategray;
 }
 
 /*nav*/
@@ -147,7 +200,6 @@ span {
   transition: 0.5s ease-in-out;
 }
 
-
 #nav-icon span:nth-child(1) {
   top: 0px;
 }
@@ -189,8 +241,7 @@ span {
 
 /*home*/
 
-.title-text,
-.h1 {
+.title-text {
   margin: 0;
   color: azure;
   font-size: 4rem;
@@ -202,19 +253,4 @@ span {
   justify-content: center;
   flex-direction: column;
   align-items: center;
-}
-
-/*list view*/
-
-/*map view*/
-
-
-// popupMenu
-.miniMenu {
-  display: block;
-  width: 200px;
-  height: 200px;
-  font-size: 1rem;
-  border: 4px solid blueviolet;
-  background-color: white;
 }
